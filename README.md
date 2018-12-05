@@ -34,13 +34,13 @@ Take partition 'GAASM0SMIO' as example.
 
 ## File Structure
 * `design/` Generate power features and IR drop label.
-    * **design{1,2,3,4}/** Each subfolder contains a different partition
-    * **design1/data/** Contains raw data for corresponding partition
+    * `design{1,2,3,4}/` Each subfolder contains a different partition
+    * `design1/data/` Contains raw data for corresponding partition
     * `design1/parse_all.py` Script generating .json file with cell information from raw data.
     * `design1/visual_designs.py` Script generating power per time frame & IR drop.
-* **cnn/** Train cnn model.
+* `cnn/` Train cnn model.
     * `cnn_{123, 124, 134, 234}.py` Script taking different partitions for model training.
-* **test_cnn/** Generate inference results & evaluate inference accuracy.
+* `test_cnn/` Generate inference results & evaluate inference accuracy.
     * `plot.py` Plot inference output and print TPR (recall) score.
     * `roc.py` Plot ROC curve and print AUC of ROC for 1um^2 grid and 5um^2 grid.
     * `eval.py` Print precision & recall.
@@ -52,21 +52,21 @@ Take partition 'GAASM0SMIO' as example.
     cd designs/design{1, 2, 3, 4}  
     python parse_all.py  
 ```
-   Output: seahawk.json, ir.json
+   Output: `seahawk.json`, `ir.json`
 
 2. Generate power features & labels in 1um^2 grids  
 ```bash
     cd designs/design{1, 2, 3, 4}  
     python visual_designs.py (period, design size given in file)  
 ```
-   Output: Time*.npy, ir.npy, Time_all*.png, ir.npy, ir.png  
+   Output: `Time*.npy`, `ir.npy`, `Time_all*.png`, `ir.npy`, `ir.png`
 
 3. Training  
 ```bash
     cd cnn  
     python cnn_{123, 124, 134, 234}.py  
 ```
-   Output: cnn_{123, 124, 134, 234}*.pkl  
+   Output: `cnn_{123, 124, 134, 234}*.pkl`  
 
 
 4. Inference  
@@ -74,7 +74,7 @@ Take partition 'GAASM0SMIO' as example.
     cd test_cnn  
     python test_all.py  
 ```
-   Output: cnn_{123, 124, 134, 234}_{one, two, three, four}.npy  
+   Output: `cnn_{123, 124, 134, 234}_{one, two, three, four}.npy`  
 
 5. Evaluate Inference  
 ```bash
@@ -83,6 +83,6 @@ Take partition 'GAASM0SMIO' as example.
     python roc.py  
     python eval.py  
 ```
-Output: cnn_{123, 124, 134, 234}\_{one, two, three, four}.png;  cnn\_{123, 124, 134, 234}_{one, two, three, four}_roc.png
+Output: `cnn_{123, 124, 134, 234}\_{one, two, three, four}.png`;  `cnn\_{123, 124, 134, 234}_{one, two, three, four}_roc.png`
 
 
