@@ -59,14 +59,14 @@ Take partition 'GAASM0SMIO' as example.
     cd designs/design{1, 2, 3, 4}  
     python visual_designs.py (period, design size given in file)  
 ```
-   Output: `Time`**`i`**`.npy` (Grid power at each time frame), `ir.npy` (Grid IR drop), `Time_all*.png`, `ir.png`
+   Output: `Time`**`i`**`.npy` (Grid power at time frame **i**), `ir.npy` (Grid IR drop), `Time_all*.png`, `ir.png`
 
 3. Training  
 ```bash
     cd cnn  
     python cnn_{123, 124, 134, 234}.py  
 ```
-   Output: `cnn_{123, 124, 134, 234}`**`i`**`.pkl` (CNN model trained with three partitions, epoch=(i+1)*20, i=0 is enough)
+   Output: `cnn_{123, 124, 134, 234}`**`j`**`.pkl` (CNN model trained with three partitions, epoch=(**j**+1)*20, i=0 is enough)
 
 4. Perform Inference  
 ```bash
