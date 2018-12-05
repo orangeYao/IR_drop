@@ -1,11 +1,11 @@
 
-
 # PowerNet: predict IR drop with cell power using CNN.
 
 ## Overall
 This repository contains python scripts for IR drop prediction with Convolutional Neural Network (CNN). The input feature is vectorless cell power and cell toggle rate given by Seahawk. We customized CNN architecture by a maximum structure.
 
 ## Raw Data
+Take design 'GAASM0SMIO' as example.  
 * Cell Information 
     * cap.json -- Cell capacitance
     * pos.json -- Cell coordinates
@@ -41,31 +41,41 @@ Generate inference results. Evaluate inference accuracy.
 
 
 ## Overall Flow
-Take design 'GAASM0SMIO' as example.  
 1. Build .json files with cell information (seahawk.json) and IR drop information (ir.json).  
-    1.1. cd designs/design{1, 2, 3, 4}  
-    1.2. python parse_all.py  
+```bash
+    cd designs/design{1, 2, 3, 4}  
+    python parse_all.py  
+```
    Output: seahawk.json, ir.json
 
 2. Generate power features & labels in 1um^2 grids  
-    2.1. cd designs/design{1, 2, 3, 4}  
-    2.2. python visual_designs.py (period, design size given in file)  
+```bash
+    cd designs/design{1, 2, 3, 4}  
+    python visual_designs.py (period, design size given in file)  
+```
    Output: Time*.npy, ir.npy, Time_all*.png, ir.npy, ir.png  
 
 3. Training  
-    3.1. cd cnn  
-    3.2 python cnn_{123, 124, 134, 234}.py  
+```bash
+    cd cnn  
+    python cnn_{123, 124, 134, 234}.py  
+```
    Output: cnn_{123, 124, 134, 234}*.pkl  
 
+
 4. Inference  
-    4.1. cd test_cnn  
-    4.2. python test_all.py  
+```bash
+    cd test_cnn  
+    python test_all.py  
+```
    Output: cnn_{123, 124, 134, 234}_{one, two, three, four}.npy  
 
 5. Evaluate Inference  
-    5.1. cd test_cnn  
-    5.2. evaluate
-        python plot.py  
-        python roc.py  
-        python eval.py  
+```bash
+    cd test_cnn  
+    python plot.py  
+    python roc.py  
+    python eval.py  
+```
+Output: cnn_{123, 124, 134, 234}_{one, two, three, four}.png;  cnn_{123, 124, 134, 234}_{one, two, three, four}_roc.png
 
