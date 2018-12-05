@@ -40,28 +40,28 @@ Generate inference results. Evaluate inference accuracy.
 
 
 ## Overall Flow
-1. Build .json files with cell information (seahawk.json) and IR drop information (ir.json).
-   cd designs/design{1, 2, 3, 4}
-   python parse_all.py
+1. Build .json files with cell information (seahawk.json) and IR drop information (ir.json).  
+   cd designs/design{1, 2, 3, 4}  
+   python parse_all.py  
    Output: seahawk.json, ir.json
 
-2. Generate power features & labels in 1um^2 grids
-   cd designs/design{1, 2, 3, 4}
-   python visual_designs.py (period, design size given in file)
-   Output: Time*.npy, ir.npy, Time_all*.png, ir.npy, ir.png
+2. Generate power features & labels in 1um^2 grids  
+   cd designs/design{1, 2, 3, 4}  
+   python visual_designs.py (period, design size given in file)  
+   Output: Time*.npy, ir.npy, Time_all*.png, ir.npy, ir.png  
 
-3. Training
-   cd cnn
-   python cnn_{123, 124, 134, 234}.py
-   Output: cnn_{123, 124, 134, 234}*.pkl
+3. Training  
+   cd cnn  
+   python cnn_{123, 124, 134, 234}.py  
+   Output: cnn_{123, 124, 134, 234}*.pkl  
 
-4. Inference
-   cd test_cnn
-   python test_all.py
-   Output: cnn_{123, 124, 134, 234}_{one, two, three, four}.npy
+4. Inference  
+   cd test_cnn  
+   python test_all.py  
+   Output: cnn_{123, 124, 134, 234}_{one, two, three, four}.npy  
 
-5. Evaluate Inference
-   cd test_cnn
-   python plot.py
-   python roc.py
-   python eval.py
+5. Evaluate Inference  
+   cd test_cnn  
+   python plot.py  
+   python roc.py  
+   python eval.py  
