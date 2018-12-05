@@ -20,7 +20,7 @@ Take partition 'GAASM0SMIO' as example.
 * Resistance Information(not required)
     * GND_rlrp_inst.rpt
     * VDD_rlrp_inst.rpt
-* *Raw Data Location:
+* *Raw Data Location in Sheng Ye's scratch space:
     - /home/scratch.sye_methodology_2/GAASM0SMIO_2p1p11_icc2_default/
         - ires/GAASM0SMIO.ipo201806290025.ires.10_15_16_29/intermediate_files/{cap, pos, twf, slew}.json
         - REPs/GAASM0SMIO_rail_analysis_tw_dynamic_ir_drop_{cell, clock}.rpt.gz
@@ -47,36 +47,35 @@ Take partition 'GAASM0SMIO' as example.
     
 
 ## Overall Flow
-1. Build .json files with cell information and IR drop information.  
+1. Build .json files with cell information and IR drop information  
 ```bash
     cd designs/design{1, 2, 3, 4}  
     python parse_all.py  
 ```
-   Output: `seahawk.json`, `ir.json`
+   Output: `seahawk.json` (.json with cell information), `ir.json` (.json with IR drop information)
 
-2. Generate power features & labels in 1um^2 grids  
+2. Generate power features & labels in 1um^2 grids from .json files  
 ```bash
     cd designs/design{1, 2, 3, 4}  
     python visual_designs.py (period, design size given in file)  
 ```
-   Output: `Time*.npy`, `ir.npy`, `Time_all*.png`, `ir.npy`, `ir.png`
+   Output: `Time*.npy` (Grid power at each time frame), `ir.npy` (Grid IR drop), `Time_all*.png`, `ir.png`
 
 3. Training  
 ```bash
     cd cnn  
     python cnn_{123, 124, 134, 234}.py  
 ```
-   Output: `cnn_{123, 124, 134, 234}*.pkl`  
+   Output: `cnn_{123, 124, 134, 234}i.pkl`  (CNN model trained with three partitions, epoch=(i+1)*20, i=0 is enough)
 
-
-4. Inference  
+4. Perform Inference  
 ```bash
     cd test_cnn  
     python test_all.py  
 ```
-   Output: `cnn_{123, 124, 134, 234}_{one, two, three, four}.npy`  
+   Output: `cnn_{123, 124, 134, 234}_{one, two, three, four}.npy`
 
-5. Evaluate Inference  
+5. Evaluate Inference Result
 ```bash
     cd test_cnn  
     python plot.py  
@@ -84,5 +83,4 @@ Take partition 'GAASM0SMIO' as example.
     python eval.py  
 ```
 Output: `cnn_{123, 124, 134, 234}\_{one, two, three, four}.png`;  `cnn\_{123, 124, 134, 234}_{one, two, three, four}_roc.png`
-
 
