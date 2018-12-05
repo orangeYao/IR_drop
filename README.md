@@ -1,11 +1,12 @@
 
+
 # PowerNet: predict IR drop with cell power using CNN.
 
 ## Overall
 This repository contains python scripts for IR drop prediction with Convolutional Neural Network (CNN). The input feature is vectorless cell power and cell toggle rate given by Seahawk. We customized CNN architecture by a maximum structure.
 
 ## Raw Data
-Take design 'GAASM0SMIO' as example.  
+Take partition 'GAASM0SMIO' as example.  
 * Cell Information 
     * cap.json -- Cell capacitance
     * pos.json -- Cell coordinates
@@ -32,13 +33,18 @@ Take design 'GAASM0SMIO' as example.
 - [scikit-learn](https://scikit-learn.org/stable/)
 
 ## File Structure
-- **design/**
-Generate power features and IR drop label.
-- **cnn/**
-Train cnn model.
-- **test_cnn/**
-Generate inference results. Evaluate inference accuracy.
-
+* **design/** Generate power features and IR drop label.
+    * **design{1,2,3,4}/** Each subfolder contains a different partition
+    * **design1/data/** Contains raw data for corresponding partition
+    * **design1/parse_all.py** Script generating .json file with cell information from raw data.
+    * **design1/visual_designs.py** Script generating power per time frame & IR drop.
+* **cnn/** Train cnn model.
+    * **cnn_{123, 124, 134, 234}.py** Script taking different partitions for model training.
+* **test_cnn/** Generate inference results & evaluate inference accuracy.
+    * **plot.py** Plot inference output and print TPR (recall) score.
+    * **roc.py** Plot ROC curve and print AUC of ROC for 1um^2 grid and 5um^2 grid.
+    * **eval.py** Print precision & recall.
+    
 
 ## Overall Flow
 1. Build .json files with cell information and IR drop information.  
@@ -77,5 +83,5 @@ Generate inference results. Evaluate inference accuracy.
     python roc.py  
     python eval.py  
 ```
-Output: cnn_{123, 124, 134, 234}\_{one, two, three, four}.png;  cnn_{123, 124, 134, 234}_{one, two, three, four}_roc.png
+Output: cnn_{123, 124, 134, 234}\_{one, two, three, four}.png;  cnn\_{123, 124, 134, 234}_{one, two, three, four}_roc.png
 
