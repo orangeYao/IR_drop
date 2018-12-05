@@ -41,7 +41,7 @@ Generate inference results. Evaluate inference accuracy.
 
 
 ## Overall Flow
-1. Build .json files with cell information (seahawk.json) and IR drop information (ir.json).  
+1. Build .json files with cell information and IR drop information.  
 ```bash
     cd designs/design{1, 2, 3, 4}  
     python parse_all.py  
@@ -77,5 +77,5 @@ Generate inference results. Evaluate inference accuracy.
     python roc.py  
     python eval.py  
 ```
-Output: cnn_{123, 124, 134, 234}_{one, two, three, four}.png;  cnn_{123, 124, 134, 234}_{one, two, three, four}_roc.png
+Output: cnn_{123, 124, 134, 234}\_{one, two, three, four}.png;  cnn_{123, 124, 134, 234}_{one, two, three, four}_roc.png
 

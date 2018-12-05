@@ -19,15 +19,15 @@ def plot(board, name, vmax):
     plt.close(fig)
 
 
-irs = ['../time1/coarse/ir.npy',
-         '../time2/coarse/ir.npy',
-         '../time3/coarse/ir.npy',
-         '../time4/coarse/ir.npy']
+fdirl = ['../designs/design1/',
+         '../designs/design2/',
+         '../designs/design3/',
+         '../designs/design4/']
 s_names = ['_one', '_two', '_three', '_four']
-m_names = ['pool_15_234',
-           'pool_15_134',
-           'pool_15_124',
-           'pool_15_123']
+m_names = ['cnn_234',
+           'cnn_134',
+           'cnn_124',
+           'cnn_123']
 
 
 maxs = [0.07, 0.09, 0.06, 0.06]
