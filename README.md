@@ -2,9 +2,9 @@
 # PowerNet: predict IR drop with cell power using CNN.
 
 ## Overall
-    This repository contains python scripts for IR drop prediction Convolutional Neural Network (CNN). The input feature is vectorless cell power and cell toggle rate given by Seahawk. We customized CNN architecture by a maximum structure.
+This repository contains python scripts for IR drop prediction Convolutional Neural Network (CNN). The input feature is vectorless cell power and cell toggle rate given by Seahawk. We customized CNN architecture by a maximum structure.
 
-## Raw Data:
+## Raw Data
     Cell Information:
         cap.json -- Cell capacitance
         pos.json -- Cell coordinates
