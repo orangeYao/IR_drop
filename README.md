@@ -67,9 +67,6 @@ Take partition 'GAASM0SMIO' as example.
     python cnn_{123, 124, 134, 234}.py  
 ```
 Output: `cnn_{123, 124, 134, 234}`**`j`**`.pkl` (CNN model trained with three partitions, epoch=(**j**+1)\*20, **j**=0 is enough)  
-epoch=(**j**+1)*20, **j**=0 is enough)  
-(**j**+1)*20  
-**j**=0  
 
 4. Perform Inference  
 ```bash
