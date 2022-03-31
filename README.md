@@ -85,3 +85,4 @@ Output: `cnn_{123, 124, 134, 234}`**`j`**`.pkl` (CNN model trained with three pa
 Output: `cnn_{123, 124, 134, 234}\_{one, two, three, four}.png`;  `cnn\_{123, 124, 134, 234}_{one, two, three, four}_roc.png`
 
 
+# IR_drop
